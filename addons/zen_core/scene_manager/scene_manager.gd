@@ -26,6 +26,5 @@ func _ready() -> void:
 
 	# Assign SceneHandler as current scene
 	get_tree().current_scene = scene_handler
-	print(get_tree().current_scene)
 
 	print("[ZEN] - " + str(self.name) + " loaded.")
