@@ -1,7 +1,11 @@
 class_name SceneHandler extends Node
 
+## Last added scene.
+var current_scene: Node
+
 
 ## Adds a new scene to the node it should go based on class.
+## Sets new scene as current scene.
 func add_scene(scene: Node) -> void:
 	if scene is Node2D:
 		$World2D.add_child(scene)
@@ -9,6 +13,10 @@ func add_scene(scene: Node) -> void:
 		$World3D.add_child(scene)
 	elif scene is Control:
 		$UI.add_child(scene)
+	else:
+		printerr("Scene type" + str(scene.get_class()) + "is not supported")
+		return
+	current_scene = scene
 
 
 ## Clear all scenes and add a new one.
