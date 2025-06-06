@@ -1,11 +1,20 @@
 extends Node
 
-const MAIN_SCENE_PATH = preload("res://addons/zen_core/scene_manager/main.tscn")
+const MAIN_SCENE_PATH = preload("res://addons/zen_core/scene_manager/scene_handler.tscn")
 
 var scene_handler: SceneHandler
 
 
 func _ready() -> void:
+	_bootstrap_scene_handler()
+	print("[ZEN] - " + str(self.name) + " loaded.")
+
+
+func change_scene_to(path: String) -> void:
+	scene_handler.set_scene(load(path).instantiate())
+
+
+func _bootstrap_scene_handler() -> void:
 	print("[ZEN] - SceneManager bootstrapping...")
 
 	# Get scene instanciated by engine
@@ -22,9 +31,7 @@ func _ready() -> void:
 	# Remove original scene
 	get_tree().root.remove_child(current_scene)
 	# Add original scene inside SceneHandler
-	scene_handler.add_scene_to_ui(current_scene)
+	scene_handler.add_scene(current_scene)
 
 	# Assign SceneHandler as current scene
 	get_tree().current_scene = scene_handler
-
-	print("[ZEN] - " + str(self.name) + " loaded.")

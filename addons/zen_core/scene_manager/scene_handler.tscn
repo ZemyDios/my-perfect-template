@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqpxksylwkuht"]
 
-[ext_resource type="Script" uid="uid://d0ky1e7hj1ju0" path="res://addons/zen_core/scene_manager/main.gd" id="1_5ws56"]
+[ext_resource type="Script" uid="uid://d0ky1e7hj1ju0" path="res://addons/zen_core/scene_manager/scene_handler.gd" id="1_qxlsh"]
 
 [node name="SceneHandler" type="Node"]
-script = ExtResource("1_5ws56")
+script = ExtResource("1_qxlsh")
 
 [node name="World2D" type="Node2D" parent="."]
 

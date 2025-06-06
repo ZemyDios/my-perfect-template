@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_play_button_pressed() -> void:
-	print("TODO: Play")
+	SceneManager.change_scene_to("res://scenes/levels/level.tscn")
 
 
 func _on_exit_button_pressed() -> void:
