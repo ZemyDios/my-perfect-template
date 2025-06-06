@@ -24,9 +24,9 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="My Perfect Template"
+run/main_scene="res://addons/zen_core/scene_manager/main.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
-run/main_scene="res://addons/zen_core/scene_manager/main.tscn"
 
 [autoload]
 
