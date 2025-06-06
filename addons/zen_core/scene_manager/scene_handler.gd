@@ -20,10 +20,21 @@ func add_scene(scene: Node) -> void:
 	current_scene = scene
 
 
+## Add a Transition as SceneHandler child.
+func add_transition(transition: Transition) -> void:
+	add_child(transition)
+
+
 ## Clear all scenes and add a new one.
-func set_scene(scene: Node) -> void:
+func set_scene(scene: Node, transition: Transition) -> void:
+	add_transition(transition)
+	transition.play_in()
+	await transition.transition_in_finished
 	clear_scenes()
 	add_scene(scene)
+	transition.play_out()
+	await transition.transition_out_finished
+	transition.queue_free()
 
 
 ## Calls queue_free to all child nodes from World2D, World3D and UI.
