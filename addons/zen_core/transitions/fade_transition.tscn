@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ixrcqat8b131"]
+
+[ext_resource type="Script" uid="uid://dutuxgj26c5qg" path="res://addons/zen_core/transitions/fade_transition.gd" id="1_muyyj"]
+
+[node name="FadeTransition" type="CanvasLayer"]
+script = ExtResource("1_muyyj")
+metadata/_custom_type_script = "uid://fchj48huqv8a"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

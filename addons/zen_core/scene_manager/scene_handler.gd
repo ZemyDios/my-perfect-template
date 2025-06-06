@@ -14,7 +14,8 @@ func add_scene(scene: Node) -> void:
 	elif scene is Control:
 		$UI.add_child(scene)
 	else:
-		printerr("Scene type" + str(scene.get_class()) + "is not supported")
+		printerr("Scene type " + str(scene.get_class()) + " is not supported.")
+		get_tree().root.add_child(scene)
 		return
 	current_scene = scene
 
