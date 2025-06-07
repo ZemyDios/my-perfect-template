@@ -14,6 +14,10 @@ func change_scene_to(path: String, transition: String) -> void:
 	scene_handler.set_scene(load(path).instantiate(), TransitionRegistry.get_transition(transition))
 
 
+func add_overlay(scene: Node) -> void:
+	scene_handler.add_scene(scene)
+
+
 func _bootstrap_scene_handler() -> void:
 	print("[ZEN] - SceneManager bootstrapping...")
 
