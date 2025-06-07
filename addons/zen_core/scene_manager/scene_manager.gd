@@ -10,9 +10,8 @@ func _ready() -> void:
 	print("[ZEN] - " + str(self.name) + " loaded.")
 
 
-func change_scene_to(path: String, transition_path: String) -> void:
-	var transition: Transition = load(transition_path).instantiate()
-	scene_handler.set_scene(load(path).instantiate(), transition)
+func change_scene_to(path: String, transition: String) -> void:
+	scene_handler.set_scene(load(path).instantiate(), TransitionRegistry.get_transition(transition))
 
 
 func _bootstrap_scene_handler() -> void:
