@@ -1,8 +1,8 @@
 extends Node
 
-const MAIN_SCENE_PATH = preload("res://addons/zen_core/scene_manager/scene_handler.tscn")
-
-var scene_handler: SceneHandler
+@onready var scene_handler: SceneHandler = (
+	preload("res://addons/zen_core/scene_manager/scene_handler.tscn").instantiate()
+)
 
 
 func _ready() -> void:
@@ -20,8 +20,6 @@ func _bootstrap_scene_handler() -> void:
 	# Get scene instanciated by engine
 	var current_scene := get_tree().current_scene
 
-	# Instanciate ZEN scene handler
-	scene_handler = MAIN_SCENE_PATH.instantiate()
 	# Add scene handler scene to root
 	get_tree().root.add_child.call_deferred(scene_handler)
 
