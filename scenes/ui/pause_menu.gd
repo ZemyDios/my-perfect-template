@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_continue_button_pressed() -> void:
-	pass  # Replace with function body.
+	get_parent().remove_child(self)
 
 
 func _on_main_menu_button_pressed() -> void:

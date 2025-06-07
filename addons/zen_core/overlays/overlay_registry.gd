@@ -21,11 +21,12 @@ func register(name: String, scene: PackedScene) -> void:
 ## the old instance but won't delete it.
 func get_overlay(name: String, force_new_instance := false) -> Node:
 	if not _overlays.has(name):
-		push_error("Overlay '%s' not registered." % name)
+		push_error("[ZEN] OverlayRegistry: Overlay '%s' not registered." % name)
 		return null
 
 	var data = _overlays[name]
 	if not data["instance"] or force_new_instance:
+		print("[ZEN] OverlayRegistry: Overlay '%s' instanciated." % name)
 		data["instance"] = data["scene"].instantiate()
 
 	return data["instance"]
