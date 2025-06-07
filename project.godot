@@ -31,6 +31,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneManager="*res://addons/zen_core/scene_manager/scene_manager.gd"
+TransitionRegistry="*res://addons/zen_core/transitions/transition_registry.gd"
 
 [editor_plugins]
 
