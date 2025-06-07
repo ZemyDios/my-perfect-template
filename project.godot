@@ -32,6 +32,7 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://addons/zen_core/scene_manager/scene_manager.gd"
 TransitionRegistry="*res://addons/zen_core/transitions/transition_registry.gd"
+OverlayRegistry="*res://addons/zen_core/overlays/overlay_registry.gd"
 
 [editor_plugins]
 
