@@ -30,10 +30,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameController="*res://autoloads/game_controller.gd"
 SceneManager="*res://addons/zen_core/scene_manager/scene_manager.gd"
+SceneConstants="*res://addons/zen_core/scene_manager/scene_constants.gd"
 TransitionRegistry="*res://addons/zen_core/transitions/transition_registry.gd"
 OverlayRegistry="*res://addons/zen_core/overlays/overlay_registry.gd"
-GameController="*res://autoloads/game_controller.gd"
+ConfigurationManager="*res://addons/zen_core/configuration/configuration_manager.gd"
 
 [editor_plugins]
 
