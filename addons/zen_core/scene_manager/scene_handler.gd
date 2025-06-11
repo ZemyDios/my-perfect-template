@@ -7,6 +7,8 @@ var active_scenes: Dictionary = {"main": null, "hud": null, "popups": [], "overl
 func set_main_scene(scene: Node) -> void:
 	clear_main_scene()
 	clear_all_overlays()
+	clear_all_popups()
+	clear_hud()
 	active_scenes["main"] = scene
 	add_scene(scene)
 
@@ -24,8 +26,8 @@ func set_hud(scene: Control) -> void:
 
 
 func clear_hud() -> void:
-	dispose_scene(active_scenes["main"])
-	active_scenes["main"] = null
+	dispose_scene(active_scenes["hud"])
+	active_scenes["hud"] = null
 
 
 ## Add to overlay stack.
