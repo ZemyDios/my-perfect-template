@@ -14,15 +14,18 @@ func set_main_scene(scene: Node) -> void:
 ## Dispose Main Scene
 func clear_main_scene() -> void:
 	dispose_scene(active_scenes["main"])
-	#active_scenes["main"] = null
+	active_scenes["main"] = null
 
 
 func set_hud(scene: Control) -> void:
-	pass
+	clear_hud()
+	add_scene(scene)
+	active_scenes["hud"] = scene
 
 
 func clear_hud() -> void:
-	pass
+	dispose_scene(active_scenes["main"])
+	active_scenes["main"] = null
 
 
 ## Add to overlay stack.
@@ -32,14 +35,37 @@ func push_overlay(scene: Control) -> void:
 
 
 ## Dispose last overlay.
-func pop_overlay() -> void:
-	pass
+func pop_overlay(scene: Node = null) -> void:
+	if not scene:
+		scene = (active_scenes["overlays"] as Array).back()
+	dispose_scene(scene)
+	(active_scenes["overlays"] as Array).erase(scene)
 
 
 ## Disposes all overlays.
 func clear_all_overlays() -> void:
 	for overlay in active_scenes["overlays"]:
 		dispose_scene(overlay)
+
+
+func push_popup(scene: Node) -> void:
+	add_scene(scene)
+	(active_scenes["popups"] as Array).append(scene)
+
+
+## Dispose a popup.
+## Dispose last popup if no scene specified.
+func pop_popup(scene: Node = null) -> void:
+	if not scene:
+		scene = (active_scenes["popups"] as Array).back()
+	dispose_scene(scene)
+	(active_scenes["popups"] as Array).erase(scene)
+
+
+## Disposes all popups.
+func clear_all_popups() -> void:
+	for popup in active_scenes["popups"]:
+		dispose_scene(popup)
 
 
 ## Adds a new scene to the node it should go based on class.
