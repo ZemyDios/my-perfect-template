@@ -35,9 +35,6 @@ func register(name: String, scene: PackedScene) -> void:
 func get_transition(name: String = _default) -> Transition:
 	if not _transitions.has(name):
 		push_warning("[ZEN] TransitionRegistry: Transition '%s' not found. Using default." % name)
-		if not _transitions.has(_default):
-			push_error("[ZEN] No fallback transition available!")
-			return null
 		name = _default
 	return _transitions[name].instantiate()
 

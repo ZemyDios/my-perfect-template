@@ -8,6 +8,36 @@ func _ready() -> void:
 	print("[ZEN] - " + str(self.name) + " loaded.")
 
 
+func change_to(id: String) -> void:
+	if not SceneRegistry.is_registered(id):
+		push_error("Scene ID '%s' not found in SceneRegistry." % id)
+		return
+	var scene := SceneRegistry.get_scene_instance(id)
+
+	match scene.get_meta("scene_type", null):
+		SceneConstants.TYPE_MAIN:
+			var transition: Transition
+			if scene.has_meta("transition"):
+				transition = TransitionRegistry.get_transition(scene.get_meta("transition", ""))
+				scene_handler.add_scene(transition)
+				transition.play_in()
+				await transition.transition_in_finished
+
+			scene_handler.set_main_scene(scene)
+
+			if transition:
+				transition.play_out()
+				await transition.transition_out_finished
+				scene_handler.dispose_scene(transition)
+
+		SceneConstants.TYPE_HUD:
+			scene_handler.set_hud(scene)
+		SceneConstants.TYPE_OVERLAY:
+			scene_handler.push_overlay(scene)
+		SceneConstants.TYPE_POPUP:
+			scene_handler.push_overlay(scene)
+
+
 func change_scene_to(path: String, transition_name: String) -> void:
 	var transition := TransitionRegistry.get_transition(transition_name)
 	scene_handler.add_scene(transition)

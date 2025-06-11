@@ -8,7 +8,6 @@ var config: ConfigFile = ConfigFile.new()
 
 func _ready() -> void:
 	load_config()
-	print(config.encode_to_text())
 
 
 func load_config() -> void:

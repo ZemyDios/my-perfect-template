@@ -1,11 +1,12 @@
 class_name SceneHandler extends Node
 
-var active_scenes: Dictionary = {"main": null, "hud": null, "popups": [], "overlay": []}
+var active_scenes: Dictionary = {"main": null, "hud": null, "popups": [], "overlays": []}
 
 
 ## Set a new main scene and dispose old main scene.
 func set_main_scene(scene: Node) -> void:
 	clear_main_scene()
+	clear_all_overlays()
 	active_scenes["main"] = scene
 	add_scene(scene)
 
@@ -26,7 +27,8 @@ func clear_hud() -> void:
 
 ## Add to overlay stack.
 func push_overlay(scene: Control) -> void:
-	pass
+	(active_scenes["overlays"] as Array).append(scene)
+	add_scene(scene)
 
 
 ## Dispose last overlay.
@@ -36,7 +38,8 @@ func pop_overlay() -> void:
 
 ## Disposes all overlays.
 func clear_all_overlays() -> void:
-	pass
+	for overlay in active_scenes["overlays"]:
+		dispose_scene(overlay)
 
 
 ## Adds a new scene to the node it should go based on class.

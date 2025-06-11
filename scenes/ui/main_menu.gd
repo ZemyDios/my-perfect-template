@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_play_button_pressed() -> void:
-	SceneManager.change_scene_to("res://scenes/levels/level.tscn", "fade")
+	SceneManager.change_to("level")
 
 
 func _on_exit_button_pressed() -> void:

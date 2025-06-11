@@ -36,7 +36,8 @@ func get_scene_instance(id: String) -> Node:
 	instance.set_meta("id", entry.id)
 	instance.set_meta("scene_type", entry.scene_type)
 	instance.set_meta("dispose_policy", entry.dispose_policy)
-	instance.set_meta("transition", entry.transition)
+	if not entry.transition.is_empty():
+		instance.set_meta("transition", entry.transition)
 	instance.set_meta("flags", entry.flags)
 	instance.set_meta("context", entry.context)
 
