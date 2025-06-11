@@ -24,6 +24,7 @@ func change_to(id: String) -> void:
 				await transition.transition_in_finished
 
 			scene_handler.set_main_scene(scene)
+			_process_flags(scene)
 
 			if transition:
 				transition.play_out()
@@ -38,21 +39,17 @@ func change_to(id: String) -> void:
 			scene_handler.push_overlay(scene)
 
 
-func change_scene_to(path: String, transition_name: String) -> void:
-	var transition := TransitionRegistry.get_transition(transition_name)
-	scene_handler.add_scene(transition)
-	transition.play_in()
-	await transition.transition_in_finished
-	scene_handler.set_main_scene(load(path).instantiate())
-	transition.play_out()
-	await transition.transition_out_finished
-	scene_handler.dispose_scene(transition)
+## Process a node flags.
+func _process_flags(scene: Node) -> void:
+	var flags := scene.get_meta("flags", {})
+	for flag in flags:
+		match flag:
+			"hud":
+				var hud := SceneRegistry.get_scene_instance(flags["hud"])
+				scene_handler.set_hud(hud)
 
 
-func add_overlay(scene: Node) -> void:
-	scene_handler.add_scene(scene)
-
-
+## Bootstrap the SceneHandler to make SceneManager work.
 func _bootstrap_scene_handler() -> void:
 	print("[ZEN] - SceneManager bootstrapping...")
 
