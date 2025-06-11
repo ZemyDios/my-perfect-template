@@ -27,9 +27,18 @@ func _ready() -> void:
 				"dispose_policy": SceneConstants.POLICY_QUEUE_FREE,
 				"transition": "fade",
 				"context": {},
-				"flags": {},
+				"flags": {"hud": "level_hud"},
 			}
 		)
+	)
+
+	SceneRegistry.register_scene(
+		"level_hud",
+		"res://scenes/ui/level_ui.tscn",
+		{
+			"scene_type": SceneConstants.TYPE_HUD,
+			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
+		}
 	)
 
 	SceneRegistry.register_scene(
