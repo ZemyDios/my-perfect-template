@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfc6pxm5adnla"]
-
-[ext_resource type="Script" uid="uid://c48cv11pjlk5v" path="res://scenes/levels/level.gd" id="1_377w7"]
-
-[node name="Level" type="Node2D"]
-script = ExtResource("1_377w7")
-
-[node name="CollisionPolygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(382, 149, 371, 380, 551, 475, 757, 403, 784, 150, 568, 282)

@@ -6,13 +6,20 @@ func _ready() -> void:
 		SceneRegistry
 		. register_scene(
 			"main_menu",
-			"res://scenes/ui/main_menu.tscn",
+			"res://scenes/main/main_menu.tscn",
 			{
-				"scene_type": SceneConstants.TYPE_MAIN,
-				"dispose_policy": SceneConstants.POLICY_QUEUE_FREE,
 				"transition": "fade",
-				"context": {},
-				"flags": {},
+			}
+		)
+	)
+
+	(
+		SceneRegistry
+		. register_scene(
+			"configuration_menu",
+			"res://scenes/main/configuration_menu.tscn",
+			{
+				"transition": "fade",
 			}
 		)
 	)
@@ -21,12 +28,9 @@ func _ready() -> void:
 		SceneRegistry
 		. register_scene(
 			"level",
-			"res://scenes/levels/level.tscn",
+			"res://scenes/main/level.tscn",
 			{
-				"scene_type": SceneConstants.TYPE_MAIN,
-				"dispose_policy": SceneConstants.POLICY_QUEUE_FREE,
 				"transition": "fade",
-				"context": {},
 				"flags": {"hud": "level_hud"},
 			}
 		)
@@ -34,7 +38,7 @@ func _ready() -> void:
 
 	SceneRegistry.register_scene(
 		"level_hud",
-		"res://scenes/ui/level_ui.tscn",
+		"res://scenes/hud/level_ui.tscn",
 		{
 			"scene_type": SceneConstants.TYPE_HUD,
 			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
@@ -43,7 +47,7 @@ func _ready() -> void:
 
 	SceneRegistry.register_scene(
 		"pause_menu",
-		"res://scenes/ui/pause_menu.tscn",
+		"res://scenes/popups/pause_menu.tscn",
 		{
 			"scene_type": SceneConstants.TYPE_POPUP,
 			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD

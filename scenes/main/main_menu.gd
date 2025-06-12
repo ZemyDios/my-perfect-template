@@ -12,4 +12,4 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_config_button_pressed() -> void:
-	print("TODO: Change Scene to Configuration")
+	SceneManager.change_to("configuration_menu")
