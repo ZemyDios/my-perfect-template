@@ -49,8 +49,10 @@ folder_colors={
 "res://addons/zen_core/": "purple",
 "res://assets/": "orange",
 "res://autoloads/": "yellow",
-"res://scenes/": "green",
-"res://test/": "pink"
+"res://docs/": "green",
+"res://resources/": "teal",
+"res://scenes/": "blue",
+"res://test/": "purple"
 }
 
 [input]
