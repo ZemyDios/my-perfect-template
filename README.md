@@ -1,13 +1,12 @@
 # ZEN – Zemy’s Essential Nodework
 
-**ZEN** is a modular, professional-grade scene architecture plugin for **Godot 4.4+**, built to streamline scene management in 2D and 3D projects. It empowers developers with clean, extensible control over scene transitions, HUDs, overlays, and visual flow logic.
+**ZEN** is a modular scene architecture plugin for **Godot 4.4+**, built to streamline scene management in 2D and 3D projects(I plan to add many more features). It empowers developers with clean, extensible control over scene transitions, HUDs, overlays, and visual flow logic.
 
 ---
 
 ## 🚀 Key Features
 
-### 🎭 Professional Scene Handling
-- 🔁 Fully **asynchronous scene switching** with native `await` support.
+### 🎭 Scene Handling
 - 🧩 Built-in support for multiple scene types:
   - `main`, `hud`, `popup`, `overlay`
 - 🧱 Clear separation of concerns:
@@ -23,44 +22,58 @@
 - 📖 One-liner usage: `SceneManager.change_to("level_1")`
 
 ### 🧠 Context & Declarative Flags
-- 📥 **Context dictionary** for passing dynamic data between scenes
+- 📥 **Context dictionary** for passing dynamic data between scenes (Need implementation)
 - 🏷️ Built-in **scene behavior flags**, automatically interpreted by SceneManager:
   - `"pause": true` → pauses the game
   - `"hud": "level_ui"` → loads the specified HUD
-- 🎯 Scenes can optionally implement `set_context()` to receive this data
+  - Plan on adding more flags
 
 ### 🎨 Transitions System
-- 🔄 Fully modular transition support via `TransitionRegistry`
+- 🔄 Fully modular transition support via `TransitionRegistry` (Probably will move this to SceneRegistry)
 - ✨ Predefined & custom transitions (fade, slide, etc.)
 - 🧘 Integrated smoothly with the async scene flow
 
 ### 🧘 Developer UX
-- ✅ No more magic strings – constants provided via `SceneConstants`
-- ⚙️ Automatic main + HUD loading
+- ✅ No magic strings – constants provided via `SceneConstants`
+- ⚙️ Easy to understand, you can learn basic usage with docs.
 - 🧹 No need to manually call `queue_free()`
-- 🔌 Easily extendable (audio manager, save system, etc.)
+- 🔌 Easily extendable (audio manager, save system, etc.) (Future modules)
 
 ### 🔧 Clean Architecture
 | Component            | Responsibility                         |
 |----------------------|-----------------------------------------|
 | `SceneManager`       | Flow control, context, transition logic |
-| `SceneHandler`       | Node placement and layer management     |
+| `SceneHandler`       | Node placement and management           |
 | `SceneRegistry`      | Scene declarations and metadata         |
 | `TransitionRegistry` | Visual transition storage and lookup    |
 
 ---
 
-## 💡 Ideal For
-- 2D and 3D games
-- Scalable long-term projects
-- Professional templates and tools
-- Teams working with scene separation
-
----
-
 ## 📎 Minimal Usage Example
 ```gdscript
-await SceneManager.change_to("main_menu")
+# Register a new scene.
+SceneRegistry.register_scene("main_menu", "res://scenes/ui/main_menu.tscn")
+
+# Change to that scene.
+SceneManager.change_to("main_menu")
+```
+
+```gdscript
+# Register a new scene.
+# This scene defines a transition to use and a hud that would be added when you change to the level scene.
+SceneRegistry.register_scene(
+  "level",
+  "res://scenes/levels/level.tscn",
+  {
+    "transition": "fade",
+    "flags": {"hud": "level_hud"},
+  }
+)
+	
+
+# Change to that scene.
+# You change to the level with a transition and also add "level_hud" with just a line.
+SceneManager.change_to("level")
 ```
 
 Thanks to scene registration, that's **all you need**. HUDs, transitions, context – everything flows automatically.
@@ -68,9 +81,19 @@ Thanks to scene registration, that's **all you need**. HUDs, transitions, contex
 ---
 
 ## 🧪 Coming Soon
-- Visual editor for drag-and-drop scene registration
-- Debug overlay and live scene flow debugger
-- Unit tests and a real working demo scene
+- Better flag system.
+- Use previous scene metadata to enable more options.
+- Unit tests and a real working demo scene.
+
+---
+
+## 🚀 Getting Started
+
+1. Clone or download the repo.
+2. Open in Godot 4.4+.
+3. Enable the plugin in **Project > Project Settings > Plugins > ZEN**.
+4. Press play and test the demo scenes.
+5. Try replacing or adding new scenes in `SceneRegistry.gd`.
 
 ---
 
