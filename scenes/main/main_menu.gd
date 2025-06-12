@@ -2,9 +2,7 @@ extends Control
 
 
 func _on_play_button_pressed() -> void:
-	await SceneManager.change_to("level")
-	#SceneManager.change_to("level_hud")
-	print("called")
+	SceneManager.change_to("level")
 
 
 func _on_exit_button_pressed() -> void:
