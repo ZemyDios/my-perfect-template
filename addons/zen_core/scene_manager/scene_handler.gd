@@ -96,8 +96,7 @@ func dispose_scene(scene: Node) -> void:
 		SceneConstants.POLICY_QUEUE_FREE:
 			scene.queue_free()
 		SceneConstants.POLICY_REMOVE_CHILD:
-			scene.reparent(self)
-			remove_child(scene)
+			scene.get_parent().remove_child(scene)
 		SceneConstants.POLICY_HIDE:
 			scene.hide()
 		SceneConstants.POLICY_PERSISTENT:
