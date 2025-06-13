@@ -6,4 +6,4 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_main_menu_button_pressed() -> void:
-	SceneManager.change_scene_to("res://scenes/ui/main_menu.tscn", "fade")
+	SceneManager.change_to("main_menu")
