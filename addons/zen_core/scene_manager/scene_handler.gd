@@ -88,7 +88,7 @@ func add_scene(scene: Node) -> void:
 ## Dispose a scene based on its dispose policy.
 ## By default will be queue_free().
 func dispose_scene(scene: Node) -> void:
-	if not scene:
+	if not scene or not scene.is_inside_tree():
 		return
 
 	var dispose_policy := scene.get_meta("dispose_policy", SceneConstants.POLICY_QUEUE_FREE)
