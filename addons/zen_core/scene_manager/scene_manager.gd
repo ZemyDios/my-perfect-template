@@ -16,6 +16,12 @@ func change_to(id: String) -> void:
 
 	match scene.get_meta("scene_type", null):
 		SceneConstants.TYPE_MAIN:
+			var actual_scene := scene_handler.get_scene(SceneConstants.TYPE_MAIN)
+
+			if actual_scene == scene:
+				push_warning("New scene and actual scene are the same.")
+				return
+
 			var transition: Transition
 			if scene.has_meta("transition"):
 				transition = TransitionRegistry.get_transition(scene.get_meta("transition", ""))
@@ -37,6 +43,8 @@ func change_to(id: String) -> void:
 			scene_handler.push_overlay(scene)
 		SceneConstants.TYPE_POPUP:
 			scene_handler.push_overlay(scene)
+		_:
+			printerr("Scene has no type.")
 
 
 ## Process a node flags.
