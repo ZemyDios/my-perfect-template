@@ -50,6 +50,10 @@ func change_to(id: String) -> void:
 			printerr("Scene has no type.")
 
 
+func pop_overlay(scene: Node = null) -> void:
+	scene_handler.pop_overlay(scene)
+
+
 ## Process a node flags.
 func _process_flags(scene: Node) -> void:
 	var flags := scene.get_meta("flags", {})
