@@ -53,8 +53,3 @@ func _ready() -> void:
 			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
 		}
 	)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		SceneManager.change_to("pause_menu")
