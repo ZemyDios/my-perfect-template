@@ -13,6 +13,9 @@ func change_to(id: String) -> void:
 		push_error("Scene ID '%s' not found in SceneRegistry." % id)
 		return
 	var scene := SceneRegistry.get_scene_instance(id)
+	if scene.is_inside_tree():
+		push_warning("Scene is already inside the tree.")
+		return
 
 	match scene.get_meta("scene_type", null):
 		SceneConstants.TYPE_MAIN:
