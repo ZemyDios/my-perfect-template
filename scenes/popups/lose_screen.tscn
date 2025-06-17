@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ufqo64bhwm2h"]
+[gd_scene load_steps=3 format=3 uid="uid://c1pxf67ux4mpy"]
 
-[ext_resource type="Script" uid="uid://c18cmbilmpgt0" path="res://scenes/popups/quit_confirmation.gd" id="1_rfvr8"]
+[ext_resource type="Script" uid="uid://bcmylech2fus0" path="res://scenes/popups/lose_screen.gd" id="1_mw1c2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfvr8"]
 bg_color = Color(0.303233, 0.303233, 0.303233, 1)
@@ -15,14 +15,14 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="QuitConfirmation" type="Control"]
+[node name="LoseScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rfvr8")
+script = ExtResource("1_mw1c2")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -53,7 +53,7 @@ theme_override_constants/separation = 40
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Are you sure you want to exit?"
+text = "You lose!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -61,15 +61,15 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="YesButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RetryButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
-text = "Yes"
+text = "Retry Level"
 
-[node name="NoButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
-text = "No"
+text = "Main Menu"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

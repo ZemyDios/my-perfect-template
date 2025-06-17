@@ -12,11 +12,11 @@ func _ready() -> void:
 
 
 ## Change main scene.
-func change_to(id: String) -> void:
+func change_to(id: String, force_new_instance := false) -> void:
 	if not SceneRegistry.is_registered(id):
 		push_error("Scene ID '%s' not found in SceneRegistry." % id)
 		return
-	var scene := SceneRegistry.get_scene_instance(id)
+	var scene := SceneRegistry.get_scene_instance(id, force_new_instance)
 	if scene.is_inside_tree():
 		push_warning("Scene is already inside the tree.")
 		return

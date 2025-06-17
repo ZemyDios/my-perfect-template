@@ -1,6 +1,17 @@
-[gd_scene format=3 uid="uid://dfc6pxm5adnla"]
+[gd_scene load_steps=2 format=3 uid="uid://dfc6pxm5adnla"]
+
+[ext_resource type="Script" uid="uid://ov0xnpgfg6bt" path="res://scenes/main/level.gd" id="1_ubdft"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_ubdft")
 
 [node name="CollisionPolygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(382, 149, 371, 380, 551, 475, 757, 403, 784, 150, 568, 282)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 397.0
+offset_top = 316.0
+offset_right = 730.0
+offset_bottom = 339.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Press W to win, press any other key to lose."

@@ -73,3 +73,21 @@ func _ready() -> void:
 			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
 		}
 	)
+
+	SceneRegistry.register_scene(
+		"win_screen",
+		"res://scenes/popups/win_screen.tscn",
+		{
+			"scene_type": SceneConstants.TYPE_POPUP,
+			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
+		}
+	)
+
+	SceneRegistry.register_scene(
+		"lose_screen",
+		"res://scenes/popups/lose_screen.tscn",
+		{
+			"scene_type": SceneConstants.TYPE_POPUP,
+			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
+		}
+	)

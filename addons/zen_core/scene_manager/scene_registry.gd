@@ -21,13 +21,13 @@ func register_scene(id: String, path: String, config: Dictionary = {}) -> void:
 		load(entry.path)
 
 
-func get_scene_instance(id: String) -> Node:
+func get_scene_instance(id: String, force_new_instance := false) -> Node:
 	if not _scenes.has(id):
 		push_error("Scene '%s' not found!" % id)
 		return
 
 	var entry := _scenes[id]
-	if entry.instance:
+	if entry.instance and not force_new_instance:
 		return entry.instance
 
 	entry.instance = load(entry.path).instantiate()
