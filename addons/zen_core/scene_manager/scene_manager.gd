@@ -8,6 +8,10 @@ func _ready() -> void:
 	print("[ZEN] - " + str(self.name) + " loaded.")
 
 
+### MAIN SCENE FUNCTIONS
+
+
+## Change main scene.
 func change_to(id: String) -> void:
 	if not SceneRegistry.is_registered(id):
 		push_error("Scene ID '%s' not found in SceneRegistry." % id)
@@ -50,8 +54,33 @@ func change_to(id: String) -> void:
 			printerr("Scene has no type.")
 
 
+## Restarts main scene.
+func restart_scene() -> void:
+	pass
+
+
+## Returns to previous main scene, not sure if i should make this function.
+func return_to_previous_scene() -> void:
+	pass
+
+
+## Preloads an scene to use it later.
+func preload_scene(id: String) -> void:
+	pass
+
+
+## Loads a scene in background.
+func load_scene() -> void:
+	pass
+
+
 func pop_overlay(scene: Node = null) -> void:
 	scene_handler.pop_overlay(scene)
+
+
+## Quit the game, this method should take care of saving unsaved data before closing the game.
+func quit() -> void:
+	get_tree().quit()
 
 
 ## Process a node flags.
