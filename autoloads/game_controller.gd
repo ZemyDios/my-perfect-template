@@ -64,3 +64,12 @@ func _ready() -> void:
 			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
 		}
 	)
+
+	SceneRegistry.register_scene(
+		"quit_confirmation",
+		"res://scenes/popups/quit_confirmation.tscn",
+		{
+			"scene_type": SceneConstants.TYPE_POPUP,
+			"dispose_policy": SceneConstants.POLICY_REMOVE_CHILD
+		}
+	)

@@ -6,7 +6,7 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_exit_button_pressed() -> void:
-	SceneManager.quit()
+	SceneManager.change_to("quit_confirmation")
 
 
 func _on_config_button_pressed() -> void:
