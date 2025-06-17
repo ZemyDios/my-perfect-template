@@ -27,6 +27,17 @@ func _ready() -> void:
 	(
 		SceneRegistry
 		. register_scene(
+			"level_select",
+			"res://scenes/main/level_select.tscn",
+			{
+				"transition": "fade",
+			}
+		)
+	)
+
+	(
+		SceneRegistry
+		. register_scene(
 			"level",
 			"res://scenes/main/level.tscn",
 			{
